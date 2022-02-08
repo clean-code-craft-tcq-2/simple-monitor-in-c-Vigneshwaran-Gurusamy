@@ -2,7 +2,7 @@
 #include <assert.h>
 
 //Battery Temperature check
-int batteryTemperatureIsOk(float temperature) 
+int BatteryTemperatureIsOk(float temperature) 
 {
   if(temperature < 0 || temperature > 45) 
   {
@@ -16,7 +16,7 @@ int batteryTemperatureIsOk(float temperature)
 }
 
 //Battery SOC check
-int batterySOCIsOk(float soc)
+int BatterySOCIsOk(float soc)
 {
   if(soc < 20 || soc > 80) 
   {
@@ -30,7 +30,7 @@ int batterySOCIsOk(float soc)
 }
 
 //Battery Chargerate check
-int batterychargeRateIsOk(float chargeRate)
+int BatteryChargeRateIsOk(float chargeRate)
 {
   if(chargeRate > 0.8) 
   {
@@ -43,23 +43,24 @@ int batterychargeRateIsOk(float chargeRate)
   }
 }
 
-int batteryIsOk(float temperature, float soc, float chargeRate)
+int BatteryIsOk(float temperature, float soc, float chargeRate)
 {
-  return (batteryTemperatureIsOk(temperature) && batterySOCIsOk(soc) && batterychargeRateIsOk(chargeRate));
+  return (BatteryTemperatureIsOk(temperature) && BatterySOCIsOk(soc) && BatteryChargeRateIsOk(chargeRate));
 }
 
-int batteryIsNotOk(float temperature, float soc, float chargeRate)
+int BatteryIsNotOk(float temperature, float soc, float chargeRate)
 {
-  return (batteryTemperatureIsOk(temperature) || batterySOCIsOk(soc) || batterychargeRateIsOk(chargeRate));
+  return (BatteryTemperatureIsOk(temperature) || BatterySOCIsOk(soc) || BatteryChargeRateIsOk(chargeRate));
 }
 
-void testbatterystatus()
+//Test Battery
+void TestBatteryStatus()
 {
-  assert(batteryIsOk(25, 70, 0.7));
-  assert(batteryIsNotOk(50, 85, 0));
+  assert(BatteryIsOk(25, 70, 0.7));
+  assert(BatteryIsNotOk(50, 85, 0));
 }
 
 int main() 
 {
-  testbatterystatus();
+  TestBatteryStatus();
 }
