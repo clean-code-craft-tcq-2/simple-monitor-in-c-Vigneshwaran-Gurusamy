@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 
+//Battery Temperature check
 int batteryTemperatureIsOk(float temperature) 
 {
   if(temperature < 0 || temperature > 45) 
@@ -14,6 +15,7 @@ int batteryTemperatureIsOk(float temperature)
   }
 }
 
+//Battery SOC check
 int batterySOCIsOk(float soc)
 {
   if(soc < 20 || soc > 80) 
@@ -27,6 +29,7 @@ int batterySOCIsOk(float soc)
   }
 }
 
+//Battery Chargerate check
 int batterychargeRateIsOk(float chargeRate)
 {
   if(chargeRate > 0.8) 
